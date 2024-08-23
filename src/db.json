@@ -91,5 +91,61 @@
       "published_at": "2021-02-16"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "author_id": "001",
+      "post_id": "001",
+      "content": "asdasd",
+      "published_at": "2041-04-03 01:29",
+      "id": 1
+    },
+    {
+      "author_id": "001",
+      "post_id": "001",
+      "content": "zxczxczxc",
+      "published_at": "2042-01-10 06:18",
+      "id": 2
+    },
+    {
+      "author_id": "001",
+      "post_id": "001",
+      "content": "Сайт лажа\n",
+      "published_at": "2036-11-14 05:43",
+      "id": 3
+    },
+    {
+      "author_id": "001",
+      "post_id": "001",
+      "content": "Хороший сайт",
+      "published_at": "2050-04-14 15:06",
+      "id": 4
+    },
+    {
+      "author_id": "001",
+      "post_id": "001",
+      "content": "Новый комментарий",
+      "published_at": "2046-10-16 18:42",
+      "id": 5
+    },
+    {
+      "author_id": "001",
+      "post_id": "001",
+      "content": "Еще один комментарий",
+      "published_at": "2060-03-31 05:44",
+      "id": 6
+    }
+  ],
+  "sessions": [
+    {
+      "hash": "0.16144473734657438512840599287301301956176757812500",
+      "user": {
+        "id": "001",
+        "login": "koryto_008",
+        "password": "asd123",
+        "registedAt": "2020-05-13",
+        "roleId": 0
+      },
+      "id": 1
+    }
+  ]
 }
