@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Icon, Input } from '../../../../components';
 import { SpecialPanel } from '../special-panel/special-panel';
-import { useRef } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { sanitizeContent } from './utils';
 import { useDispatch } from 'react-redux';
 import { savePostAsync } from '../../../../actions';
@@ -15,31 +15,43 @@ const PostFormContainer = ({
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const requestServer = useServerRequest();
-	const imageRef = useRef(null);
-	const titleRef = useRef(null);
+
+	const [imageUrlValue, setImageUrlValue] = useState('');
+	const [titleValue, setTitleValue] = useState('');
 	const contentRef = useRef(null);
 
+	useLayoutEffect(() => {
+		setImageUrlValue(imageUrl);
+		setTitleValue(title);
+	}, [imageUrl, title]);
+
 	const onSave = () => {
-		const newImageUrl = imageRef.current.value;
-		const newTitle = titleRef.current.value;
 		const newContent = sanitizeContent(contentRef.current.innerHTML);
 
 		const newPostData = {
 			id,
-			imageUrl: newImageUrl,
-			title: newTitle,
+			imageUrl: imageUrlValue,
+			title: titleValue,
 			content: newContent,
 		};
 
-		dispatch(savePostAsync(requestServer, newPostData)).then(() => {
+		dispatch(savePostAsync(requestServer, newPostData)).then(({ id }) => {
 			navigate(`/post/${id}`);
 		});
 	};
 
 	return (
 		<div className={className}>
-			<Input ref={imageRef} defaultValue={imageUrl} placeholder="Изображение..." />
-			<Input ref={titleRef} defaultValue={title} placeholder="Заголовок..." />
+			<Input
+				onChange={({ target }) => setImageUrlValue(target.value)}
+				value={imageUrlValue}
+				placeholder="Изображение..."
+			/>
+			<Input
+				onChange={({ target }) => setTitleValue(target.value)}
+				value={titleValue}
+				placeholder="Заголовок..."
+			/>
 			<SpecialPanel
 				id={id}
 				publishedAt={publishedAt}
@@ -65,7 +77,10 @@ export const PostForm = styled(PostFormContainer)`
 	}
 
 	& .post-text {
+		min-height: 80px;
+		border: 1px solid #000;
 		font-size: 18px;
 		white-space: pre-line;
+		padding: 5px;
 	}
 `;
