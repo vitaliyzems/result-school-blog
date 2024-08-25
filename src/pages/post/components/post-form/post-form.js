@@ -41,6 +41,7 @@ const PostFormContainer = ({
 			<Input ref={imageRef} defaultValue={imageUrl} placeholder="Изображение..." />
 			<Input ref={titleRef} defaultValue={title} placeholder="Заголовок..." />
 			<SpecialPanel
+				id={id}
 				publishedAt={publishedAt}
 				margin="20px 0"
 				editButton={<Icon id="fa-floppy-o" size="21px" onClick={onSave} />}
