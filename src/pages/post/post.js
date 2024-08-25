@@ -9,6 +9,7 @@ import { selectPost } from '../../selectors';
 
 const PostContainer = ({ className }) => {
 	const post = useSelector(selectPost);
+	const isCreating = useMatch('/post');
 	const isEditing = useMatch('/post/:id/edit');
 	const { id } = useParams();
 	const requestServer = useServerRequest();
@@ -16,15 +17,19 @@ const PostContainer = ({ className }) => {
 
 	useLayoutEffect(() => {
 		dispatch(RESET_POST_DATA);
-	}, [dispatch]);
+	}, [dispatch, isCreating]);
 
 	useEffect(() => {
+		if (isCreating) {
+			return;
+		}
+
 		dispatch(loadPostAsync(requestServer, id));
-	}, [dispatch, requestServer, id]);
+	}, [isCreating, dispatch, requestServer, id]);
 
 	return (
 		<div className={className}>
-			{isEditing ? (
+			{isCreating || isEditing ? (
 				<PostForm post={post} />
 			) : (
 				<>
