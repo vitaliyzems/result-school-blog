@@ -1,7 +1,30 @@
-import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Icon } from '../../../../components';
+import { useServerRequest } from '../../../../hooks';
+import { CLOSE_MODAL, openModal, removePostAsync } from '../../../../actions';
+import styled from 'styled-components';
 
-const SpecialPanelContainer = ({ className, publishedAt, editButton }) => {
+const SpecialPanelContainer = ({ id, className, publishedAt, editButton }) => {
+	const dispatch = useDispatch();
+	const requestServer = useServerRequest();
+	const navigate = useNavigate();
+
+	const onPostRemove = (postId) => {
+		dispatch(
+			openModal({
+				text: 'Удалить статью?',
+				onConfirm: () => {
+					dispatch(removePostAsync(requestServer, postId)).then(() => {
+						navigate('/');
+					});
+					dispatch(CLOSE_MODAL);
+				},
+				onCancel: () => dispatch(CLOSE_MODAL),
+			}),
+		);
+	};
+
 	return (
 		<div className={className}>
 			<div className="published-at">
@@ -10,7 +33,12 @@ const SpecialPanelContainer = ({ className, publishedAt, editButton }) => {
 			</div>
 			<div className="buttons">
 				{editButton}
-				<Icon id="fa-trash-o" size="21px" margin="0 0 0 20px" />
+				<Icon
+					id="fa-trash-o"
+					size="21px"
+					margin="0 0 0 20px"
+					onClick={() => onPostRemove(id)}
+				/>
 			</div>
 		</div>
 	);
