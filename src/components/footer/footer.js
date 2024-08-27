@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const FooterContainer = ({ className }) => {
 	const [city, setCity] = useState('');
-	const [temperature, setTemperaature] = useState('');
+	const [temperature, setTemperature] = useState('');
 	const [weather, setWeather] = useState('');
 
 	useEffect(() => {
@@ -13,7 +13,7 @@ const FooterContainer = ({ className }) => {
 			.then((response) => response.json())
 			.then(({ name, main, weather }) => {
 				setCity(name);
-				setTemperaature(Math.round(main.temp));
+				setTemperature(Math.round(main.temp / 10)); // Сервер почему то неправильно показывает мой город (умножает на 10)
 				setWeather(weather[0].description);
 			});
 	}, []);
