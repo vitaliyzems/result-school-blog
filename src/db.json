@@ -126,6 +126,20 @@
       "content": "Asd asdasdasd",
       "published_at": "2052-11-22 01:34",
       "id": 1
+    },
+    {
+      "author_id": "001",
+      "post_id": "004",
+      "content": "Пишу комментарий",
+      "published_at": "2052-04-25 05:17",
+      "id": 2
+    },
+    {
+      "author_id": "001",
+      "post_id": "004",
+      "content": "Еще один комментарий!",
+      "published_at": "2048-09-27 15:10",
+      "id": 3
     }
   ],
   "sessions": [
