@@ -1,2 +1,2 @@
-export * from './generateDate';
+export * from './generate-date.js';
 export * from './get-comments-count';
