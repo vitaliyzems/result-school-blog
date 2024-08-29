@@ -18,11 +18,8 @@ export const sessions = {
 		await deleteSession(session.id);
 	},
 	async access(hash, accessRoles) {
-		const {
-			user,
-			user: { roleId },
-		} = await getSession(hash);
+		const dbSession = await getSession(hash);
 
-		return !!user && accessRoles.includes(roleId);
+		return !!dbSession?.user && accessRoles.includes(dbSession.user.role_id);
 	},
 };
