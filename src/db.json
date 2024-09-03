@@ -2,8 +2,8 @@
   "users": [
     {
       "id": "001",
-      "login": "koryto_008",
-      "password": "asd123",
+      "login": "admin",
+      "password": "admin123",
       "registed_at": "2020-05-13 10:24",
       "role_id": 0
     },
@@ -13,13 +13,6 @@
       "registed_at": "2035-08-01 13:09",
       "role_id": 1,
       "id": "aQqqgoR"
-    },
-    {
-      "login": "user_2",
-      "password": "asd123",
-      "registed_at": "2062-11-05 07:40",
-      "role_id": 2,
-      "id": "bw0VSNv"
     }
   ],
   "roles": [
@@ -158,20 +151,27 @@
     {
       "author_id": "bw0VSNv",
       "post_id": "004",
-      "content": "Очень интересно!",
-      "published_at": "2037-05-09 22:36",
-      "id": 4
+      "content": "Комментарий",
+      "published_at": "2057-12-13 18:43",
+      "id": 5
+    },
+    {
+      "author_id": "bw0VSNv",
+      "post_id": "004",
+      "content": "Здравствуйте!",
+      "published_at": "2045-04-21 19:45",
+      "id": 6
     }
   ],
   "sessions": [
     {
-      "hash": "0.72637788352667476132751289696898311376571655273438",
+      "hash": "0.88726907552912614995932472083950415253639221191406",
       "user": {
-        "login": "user_2",
-        "password": "asd123",
-        "registed_at": "2062-11-05 07:40",
-        "role_id": 2,
-        "id": "bw0VSNv"
+        "id": "001",
+        "login": "admin",
+        "password": "admin123",
+        "registedAt": "2020-05-13 10:24",
+        "roleId": 0
       },
       "id": 1
     }
