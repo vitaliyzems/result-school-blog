@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { Icon } from '../../../../../../components';
 import { useServerRequest } from '../../../../../../hooks';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,6 +6,7 @@ import { CLOSE_MODAL, openModal, removeCommentAsync } from '../../../../../../ac
 import { selectUserRole } from '../../../../../../selectors';
 import { ROLE } from '../../../../../../constants';
 import { checkAccess } from '../../../../../../utils';
+import styled from 'styled-components';
 
 const CommentContainer = ({ className, postId, id, author, content, publishedAt }) => {
 	const dispatch = useDispatch();
@@ -88,3 +89,11 @@ export const Comment = styled(CommentContainer)`
 		display: flex;
 	}
 `;
+
+Comment.propTypes = {
+	postId: PropTypes.string.isRequired,
+	id: PropTypes.number.isRequired,
+	author: PropTypes.string.isRequired,
+	content: PropTypes.string.isRequired,
+	publishedAt: PropTypes.string.isRequired,
+};
